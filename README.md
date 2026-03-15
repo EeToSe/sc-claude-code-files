@@ -11,7 +11,7 @@ The course teaches Claude Code best practices through 3 practical examples:
 - **Figma design mockup implementation** (Lesson 8)
 
 ## Course Structure
-
+- **Lesson 0**：Course outline & Navigation Guide
 - **Lesson 1**: What is Claude Code?
 - **Lesson 2**: Setup & Codebase Understanding
 - **Lesson 3**: Adding Features
@@ -29,8 +29,6 @@ The course teaches Claude Code best practices through 3 practical examples:
     - Python modules for data loading, business metrics, and dashboard
     - Sample ecommerce datasets
 - **Additional Resources** (`additional_files/`) - Supplementary materials including the visualization generated in lesson 1 and the figma binary file of the mockup used in lesson 8.
-- **Course Repository Links** (`links_to_course_repos.md`) - Links to course repositories used in lessons 3-6 and lesson 8
-
 
 ## Resources
 

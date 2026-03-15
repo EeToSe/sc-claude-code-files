@@ -50,15 +50,17 @@ The lessons are video-only. You can choose to just watch the videos, but if you'
 
 -  **Conclusion**
 
+- **Optional Reading: Prompts & Summaries of Lessons**
 
-## Link to Course Codebase Examples
+    - [Prompts & Summaries of Lessons](Lesson_summaries_prompts.md)
 
-1. Codebase for a RAG chatbot (Lessons 2-6)
-    - Here's [the repo](https://github.com/https-deeplearning-ai/starting-ragchatbot-codebase.git) of the starting codebase used in lesson 2.
+
+## Course Repository Links
+
+1. RAG Chatbot Project (Lessons 2-6)
+    - **[Starting Repository](https://github.com/https-deeplearning-ai/starting-ragchatbot-codebase.git)** used in lesson 2.
     - Lessons 3-6 add features to the starting codebase.
-    - Here's [the state](https://github.com/https-deeplearning-ai/ragchatbot-codebase.git) of the codebase after lesson 5.
-
-    Feel free to fork the starting codebase and follow the lessons' activities.
+    - **[Final Repository](https://github.com/https-deeplearning-ai/ragchatbot-codebase.git)** shows the codebase state after Lesson 5.
 
 2. E-commerce data analysis (Lesson 7)
     - Here are [the lesson files](https://github.com/https-deeplearning-ai/sc-claude-code-files/tree/main/lesson7_files).
