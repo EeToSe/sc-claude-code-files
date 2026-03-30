@@ -1,5 +1,20 @@
 # Lesson 8: Creating Web App based on a Figma Mockup
 
+## Workflow
+Design Mock-up in Figma
+       ↓
+Figma MCP Server reads it (layer structure + precise style values)
+       ↓
+Claude Code generates code (Next.js + React components)
+       ↓
+Playwright MCP Server takes screenshots (compares against Mock-up)
+       ↓
+Claude Code iterates and fixes based on screenshots
+       ↓
+Connect to real data source (FRED API)
+       ↓
+Final Dashboard
+
 ## Figma Design
 
 Here's the [Figma design mockup](https://github.com/https-deeplearning-ai/sc-claude-code-files/blob/main/additional_files/key-indicators.fig) that you can open with [Figma desktop app](https://www.figma.com/downloads/). 
@@ -45,7 +60,6 @@ You should see a confirmation message at the bottom of the screen letting you kn
   ```
 
   If you'd like to connect the dashboard to real data, then you need at get an API key from FRED [here](https://fred.stlouisfed.org/docs/api/api_key.html).
-
 
 
 ## Alternative to Figma Official MCP server - Framelink Figma MCP server 

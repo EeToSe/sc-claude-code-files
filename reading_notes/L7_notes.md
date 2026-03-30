@@ -1,7 +1,23 @@
 # Lesson 7: Refactoring a Jupyter Notebook & Creating a Dashboard
 
-## Refactoring Prompt
+Claude Code can read and edit Jupyter notebooks. The demo starts with a **messy e-commerce Jupyter notebook** that:
+- Reads data from multiple CSVs using pandas
+- Produces unformatted, disorganized output
+- Has warnings and tedious display logic
+- Mixes business logic with presentation
 
+## Refactoring the Notebook
+
+### Prompting Strategy
+
+> *"If you're ever unsure how best to prompt, you can always ask Claude."*
+
+Key prompt ingredients used:
+- **Reference files** using `@filename` and `@foldername` syntax
+- Specify **Refactoring Requirements**, **Expected Output Files** and **Success Criteria**
+- Be explicit — don't just say "refactor this," spell out what you want
+
+### Refactoring Prompts
 ```
 The @EDA.ipynb contains exploratory data analysis on e-commerce data in @ecommerce_data, focusing on sales metrics for 2023. Keep the same analysis and graphs, and improve the structure and documentation of the notebook.
 
@@ -35,7 +51,7 @@ Review the existing notebook and identify:
     - Improve all plots with:
         - Clear and descriptive titles 
         - Proper axis labels with units
-        - Legends where needed
+        - Legends where needed 
         - Appropriate chart types for the data
         - Include date range in plot titles or captions
         - use consistent color business-oriented color schemes
@@ -57,11 +73,30 @@ The notebook shows the computation of metrics for a specific date range (entire 
 - Maintainable structure that other analysts can easily understand and extend
 - Maintain all existing analyses while improving the quality, structure, and usability of the notebook.
 - Do not assume any business thresholds.
-
 ```
 
-## Prompt for Converting to Dashboards (Streamlit)
+### Output Files
 
+| Output | Purpose |
+|---|---|
+| `data_loader.py` | Load & process CSVs |
+| `metrics.py` | Calculate business metrics |
+| Refactored `.ipynb` | Cleaner notebook only for visualizations |
+| `requirements.txt` | Dependencies |
+| `README.md` | Usage documentation |
+
+**Key win:** Separation of concerns — business logic extracted out of the notebook entirely.
+
+## Converting the Notebook to a Streamlit Dashboard
+
+A second prompt (`convert-to-dashboard.md`) specified the exact layout:
+
+- **Top row:** KPI cards — Revenue, Growth, AOV, Total Orders
+- **Middle row:** Charts — Revenue over time, Category revenue, Revenue by state, Satisfaction bar chart
+- **Bottom row:** Two additional cards
+- Styling via **custom CSS**, powered by **Plotly** + **Streamlit**
+
+### Prompt for Converting to Dashboards (Streamlit)
 ```
 Convert `@EDA_Refactored.ipynb` into a professional Streamlit dashboard with this exact layout:
 
@@ -100,8 +135,14 @@ Convert `@EDA_Refactored.ipynb` into a professional Streamlit dashboard with thi
 - Use uniform card heights for each row
 - Show two decimal places for each trend indicator
 - Include requirements.txt and README.md
-
 ```
+
+
+
+
+
+
+
 
 
 

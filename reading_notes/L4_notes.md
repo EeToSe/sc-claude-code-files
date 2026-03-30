@@ -14,13 +14,23 @@ The RAG chatbot returns 'query failed' for any content-related questions. I need
 
 Save the tests in a tests folder within @backend. Run those tests against the current system to identify which components are failing. Propose fixes based on what the tests reveal is broken.
 
-Think.
+Think a lot.
 ```
 
-## Code Refactoring
+**Test-First Methodical Approach**
 
-In backend/ai_generator.py of the starting codebase, the chatbot is designed to use one tool call per query. To handle more complex queries, you can ask Claude 
-Code to refactor it so it can handle sequential tool calls. 
+1. Identify relevant files
+2. Ask Claude to write tests for these files
+3. Use Plan mode and extended thinking for deeper reasoning
+4. Run tests to identify failing components
+5. Propose fixes based on test results
+
+This approach builds a robust foundation for understanding root causes and ensuring effective fixes.
+
+
+## Code Refactoring 
+
+In the starting codebase (`backend/ai_generator.py`), the chatbot supports only a single tool call per query. However, complex questions, such as comparing two courses, often require **multiple sequential tool calls** to gather, cross-reference, and synthesize all necessary information into a complete response.
 
 Prompt:
 
@@ -53,10 +63,32 @@ Notes:
 - Write tests that verify the external behavior (API calls made, tools executed, results returned) rather than internal state details. 
 
 Use two parallel subagents to brainstorm possible plans. Do not implement any code.
-
 ```
 
+**Two Parallel Plans**
+
+- **Option A** — Simpler iterative approach, safer implementation
+- **Option B** — More comprehensive multi-round logic, better long-term maintainability
+
+**Option A is chosen** for its simplicity.
+
+
+**Implementing the Refactor**
+With plan mode on, the core changes are:
+- Update method signature to support a **maximum number of rounds**
+- Update the **system prompt**
+- Refactor **`handle_tool_execution`** to support sequential tool calls
+
+
+**Verification**
+Back in the browser:
+- ✅ Simple query (lesson details) — works, **title now appears** (requires 2 tool calls)
+- ✅ Complex query ("Are there any courses covering the same topic as Lesson 5 of the MCP course?") — Claude correctly **makes multiple tool calls** to cross-reference course outlines
+
 ## Summary of Claude Features
+- **Test-First Methodical Approach**
+
+   Use testing to systematically identify and fix issues, ensuring robust code quality.
 
 - **Extended Thinking Mode**
 

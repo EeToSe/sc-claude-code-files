@@ -6,7 +6,7 @@
 
 For each response, the chatbot returns the lesson that it used to answer the query. The vector store has two collections: one for the lesson chunks and another for the course metadata, which includes a link to each lesson. So assume you want to embed the links of the returned sources in the UI and you want Claude Code to help with that:
 
-Here's a sample prompt (used with plan mode):
+Here's a sample prompt (used with **plan mode**):
  ```
 The chat interface displays query responses with source citations. I need to modify it so each source becomes a clickable link that opens the corresponding lesson video in a new tab:
 - When courses are processed into chunks in @backend/document_processor.py, the link of each lesson is stored in the course_catalog collection
@@ -14,10 +14,17 @@ The chat interface displays query responses with source citations. I need to mod
 - The links should be embedded invisibly (no visible URL text)
 ```
 
+**To reference files efficiently in Claude Code:**
+- Use `@filename` to include file content in requests
+- Use `@foldername` to reference files within folders
+- Press `tab` to autocomplete file names
+- This provides context that makes Claude Code work more efficiently
+
 Follow-up request:
 ```
 [Ctrl + V to paste the screenshot] these links are hard to read. Make them more visually appealing.
 ```
+The ability for Claude Code to **see screenshots and make changes** is one of the most commonly used features we see and incredibly valuable to build things quickly.
 
 ### Feature 2 - Add '+ New Chat' Feature
 
@@ -29,16 +36,15 @@ Add a '+ NEW CHAT' button to the left sidebar above the courses section. When cl
 - Handle proper cleanup on both @frontend and @backend
 - Match the styling of existing sections (Courses, Try asking) - same font size, color, and uppercase formatting
 ```
+To add more context on a new line, use **backslash and press enter**.
 
-Configuration of [Playwright MCP server](https://github.com/microsoft/playwright-mcp):
+After adding the "+ New Chat" button, the UI needed minor style adjustments. Rather than manually taking and pasting screenshots, Playwright MCP is a **browser automation framework** that enables Claude to interact with web pages programmatically. It provides tools for taking screenshots, clicking elements, filling forms, and inspecting DOM structures — giving Claude visual feedback and control over the browser for automated testing and debugging.
+
+Configuration of the [Playwright MCP server](https://github.com/microsoft/playwright-mcp):
 - exit Claude Code
 - in the terminal, type: `claude mcp add playwright npx @playwright/mcp@latest` 
 - open Claude Code again and verify you are connected to the MCP server using `/mcp` command
 
-Here's the followup request:
-```
-Using the playwright MCP server, visit 127.0.0.1:8000 and view the '+ New Chat' button. I want that button to look the same as the other links below for Courses and Try Asking. Make sure this is left aligned and that the border is removed.
-```
 *Side note*: By default, Claude Code will ask you for your permission to use the "take a screenshot tool" of playwright. You can choose to always allow it when asked by Claude Code or you can manually configure this setting: type `/permissions` command -> Add a new rule (make sure that 'Allow' is highlighted) -> then you specify the full name of the tool. To type the full name of the screenshot tool, in Claude Code terminal, you can type `/mcp` -> choose your MCP server (in this case playwright) -> view tools -> 14. Take a screenshot -> you'll see the full name "mcp__playwright__browser_take_screenshot".
 
 

@@ -14,6 +14,8 @@ IMPORTANT: Only do this for front-end features.
 Once this feature is built, make sure to write the changes you made to file called frontend-changes.md
 Do not ask for permissions to modify this file, assume you can always do it.
 ```   
+
+- `$ARGUMENTS` is a placeholder in this template. Each time you invoke the command, the text you provide after the command replaces `$ARGUMENTS`. It's like defining a function once that you can call multiple times with different parameters.
 - Launch again Claude Code, you can now use the command as any other built-in command with Claude Code.
 
 
@@ -22,6 +24,7 @@ Do not ask for permissions to modify this file, assume you can always do it.
 Git worktrees allow you to check out multiple branches from the same repository into separate directories. Each worktree represents a copy of your working directory with isolated files but shares the same Git history.
 
 ## Workflow
+![work in parallel with Claude Code](../images/git-worktree.png)
 
 - Make sure first that you've added and committed any previous changes to the codebase.
 - Create the folder .trees: `mkdir .trees`.
@@ -105,3 +108,9 @@ Add essential code quality tools to the development workflow. Set up black for a
    Do not ask for permissions to modify this file, assume you can always do it.
    ```   
 - Launch again Claude Code, you can now use the command as any other built-in command with Claude Code.
+
+**Work in Parallel with Claude Code**
+
+- Git worktrees allow you to check out multiple branches from the same repository into separate directories. Each worktree represents a copy of your working directory with isolated files but shares the same Git history.
+- For each feature you want to implement, create a worktree and launch Claude Code in each terminal to work on features simultaneously.
+- After completing the changes in each worktree, merge them back into the main branch and resolve any conflicts.
