@@ -101,3 +101,41 @@ You can use regular bash command within Claude Code, but you need to start the c
     - Claude Code hooks are shell commands integrated into the system.
     - Hooks are triggered at **specific stages** in Claude Code’s lifecycle (e.g., before or after executing a tool, or when a subagent completes a task).
     - Hooks solve the critical problem of how to constrain and monitor an autonomous AI agent.
+
+## Claude 
+
+```text
+my-project/
+├── README.md                  # 📄 Human-facing introduction to the project
+├── CLAUDE.md                  # 🧠 Claude's project-level memory (loaded into system prompt)
+│                              # 💡 Write: architecture, coding standards,conventions. Keep under 200 lines
+├── CLAUDE.local.md            # 🔒 Your private preferences (auto-gitignored, never committed)
+│                              # 💡 Write: personal tool choices, local paths, debug habits
+├── .gitignore                 # 🙈 Standard git ignore 
+├── .mcp.json                  # 🔌 [optional] MCP server config (declares external services)
+├── .claude/                   # ⚙️ All Claude-specific configuration lives here
+│   ├── settings.json          # 🛡️ Core config (permissions, hook triggers, default model)
+│   ├── commands/              # 📂 [legacy] Custom slash commands
+│   │   ├── implement-feature.md 
+│   │   └── review-pr.md       
+│   ├── rules/                 # 📋 [recommended] Splits CLAUDE.md into focused files
+│   │   ├── code-style.md      # 🎨 Formatting, naming, linting rules
+│   │   ├── testing.md         # 🧪 Test patterns, coverage requirements
+│   │   └── api-conventions.md # 🔗 Endpoint design, error handling contracts
+│   ├── agents/                # 🤖 Sub-agent definitions for parallel multi-agent workflows
+│   │   ├── frontend-agent.md  # 🖥️ Specialised in UI/component work
+│   │   └── debug-agent.md     # 🐛 Specialised in tracing errors and root causes
+│   ├── hooks/                 # 🪝 Shell scripts executed by hook events
+│   │   ├── pre-tool-use.sh    # ⏮️ Runs before Claude uses any tool
+│   │   └── post-tool-use.sh   # ⏭️ Runs after Claude uses any tool
+│   └── skills/                # 💡 Reusable knowledge modules Claude activates based on context
+│       └── my-skill/          # 📦 instructions, scripts and assets for a specific skill
+│           ├── SKILL.md       # 📝 name, description (trigger keywords), allowed tools
+│           └── assets/        # 🗂️ Supporting templates, code examples, reference files
+├── src/                       # 🏗️ Source code
+├── tests/                     # 🧪 Test suites
+├── docs/                      # 📚 Documentation
+└── scripts/                   # 🔧 Utility / automation scripts
+```
+
+
