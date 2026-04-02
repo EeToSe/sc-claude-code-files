@@ -19,7 +19,7 @@ Claude Code **operates within an agentic system**.
 3. **Memory & Action**: The model gains memory to retain user preferences and task context, plus the ability to assess data needs, formulate plans, and take action.
 
 ##  Claude Code work as Agent
-
+```text
 ┌──────────────────────────────────────────────┐
 │                User Input                    │
 └──────────────────────────────────────────────┘
@@ -59,6 +59,7 @@ Claude Code **operates within an agentic system**.
 └──────────────────────────────────────────────┘
                         ↓
                 (Loop back ↑)
+```
 
 **Takeaway**:
 - “Agent” is a behavioral abstraction
@@ -69,7 +70,7 @@ Claude Code **operates within an agentic system**.
 
 
 ## Harness = (Context Builder,Tool Router,Execution Manager,State Handler)
-
+```text
                  +--------------------------------------+
                  |              Environment             |
                  |               (Codebase )            |
@@ -91,7 +92,7 @@ Claude Code **operates within an agentic system**.
           +-------------------+  State / Memory  +---------------+
                               | (Internal State) |
                               +------------------+
-
+```
 [Harness Engineering Is Cybernetics](https://x.com/odysseus0z/status/2030416758138634583): a closed-loop control system with an LLM as the policy core.
 ![](../images/harness-engineering.png)
 
