@@ -1,12 +1,104 @@
 # What is Claude Code?
 
-## Agentic System = Model+Tools+Environment+Control Loop
-![alt text](../images/harness.png)
-1. **Lightweight Harness**: Instead of talking directly to a model, Claude Code provides a lightweight harness accessed through the command line to leverage the model's intelligence for complex coding tasks.
+## Agentic System = Model+Tools+Environment+Control Loop+Memory
+Claude Code **operates within an agentic system**.
+![alt text](../images/agentic-system.png)
+
+| Component   | Example in Claude Code     |
+| ----------- | -------------------------- |
+| Model (The Reasoning Engine)      | Anthropic Claude models    |
+| Tools (The Actuators)      | file system, terminal, git |
+| Environment | local codebase             |
+| Control     | orchestration loop         |
+| Memory      | conversation + file state  |
+
+1. **Lightweight Harness**: Claude Code is a lightweight, command-line **agentic harness** that turns the Claude model into a powerful coding agent.
 
 2. **Tools & Environment**: The harness equips the model with tools, an environment, and supporting functionality to navigate codebases and solve complex problems more effectively than direct task assignment.
 
 3. **Memory & Action**: The model gains memory to retain user preferences and task context, plus the ability to assess data needs, formulate plans, and take action.
+
+##  Claude Code work as Agent
+
+┌──────────────────────────────────────────────┐
+│                User Input                    │
+└──────────────────────────────────────────────┘
+                        ↓
+┌──────────────────────────────────────────────┐
+│                 Task Parsing                 │
+└──────────────────────────────────────────────┘
+                        ↓
+┌──────────────────────────────────────────────┐
+│                 Policy  (π)                  │
+│  - Tool selection                            │
+│  - Task decomposition                        │
+└──────────────────────────────────────────────┘
+                        ↓
+┌──────────────────────────────────────────────┐
+│           Context Scheduler                  │
+│  - Codebase retrieval                        │
+│  - Skill retrieval                           │
+│  - Memory retrieval                          │
+│  - Token budget optimization                 │
+└──────────────────────────────────────────────┘
+                        ↓
+┌──────────────────────────────────────────────┐
+│                LLM Core                      │
+│     (reasoning + tool decision)              │
+└──────────────────────────────────────────────┘
+                        ↓
+┌──────────────────────────────────────────────┐
+│         Execution Engine / Tools             │
+│  - Shell                                     │
+│  - Git                                       │
+│  - Tests                                     │
+└──────────────────────────────────────────────┘
+                        ↓
+┌──────────────────────────────────────────────┐
+│            Observation / Feedback            │
+└──────────────────────────────────────────────┘
+                        ↓
+                (Loop back ↑)
+
+**Takeaway**:
+- “Agent” is a behavioral abstraction
+- “Agentic system” is a systems engineering abstraction
+- Claude Code sits exactly at the intersection:
+    - implements an agent loop
+    - embedded in an agentic runtime
+
+
+## Harness = (Context Builder,Tool Router,Execution Manager,State Handler)
+
+                 +--------------------------------------+
+                 |              Environment             |
+                 |               (Codebase )            |
+                 +------------------+-------------------+
+                                    |
+                                    |  observations (state, files, outputs)
+                                    v
++-------------------+     +------------------------+     +------------------+
+|                   |     |                        |     |                  |
+|     Harness       |---->|        Model           |---->|      Tools       |
+|   (Controller)    |     |  (Policy Approx π)     |     |   (Actuators)    |
+|                   |<----|                        |<----|                  |
++---------+---------+     +-----------+------------+     +--------+---------+
+          ^                             |                         |
+          |                             | actions                 |
+          |                             v                         |
+          |                   +------------------+                |
+          |                   |                  |                |
+          +-------------------+  State / Memory  +---------------+
+                              | (Internal State) |
+                              +------------------+
+
+[Harness Engineering Is Cybernetics](https://x.com/odysseus0z/status/2030416758138634583): a closed-loop control system with an LLM as the policy core.
+![](../images/harness-engineering.png)
+
+The harder problem is **calibrating the sensor and actuator with system-specific knowledge**.
+Human-in-the-loop calibration:
+- Calibrating the Actuator (**Execution Boundaries**): Define strict permissions, structural guardrails, and operating constraints for what & how the agent is allowed to modify.
+- Calibrating the Sensor (**Feedback Mechanisms**): Combine high-signal automated tests with human code review to measure **deviations** between the agent's output and expected behavior.
 
 ## Use scenarios
 Claude Code can help with **every step** of your project.
