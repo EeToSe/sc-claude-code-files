@@ -18,6 +18,26 @@ Do not ask for permissions to modify this file, assume you can always do it.
 - `$ARGUMENTS` is a placeholder in this template. Each time you invoke the command, the text you provide after the command replaces `$ARGUMENTS`. It's like defining a function once that you can call multiple times with different parameters.
 - Launch again Claude Code, you can now use the command as any other built-in command with Claude Code.
 
+Custom commands work by injecting a predefined prompt into the context window dynamically as a **higher priority structured instruction** that shapes model behavior.
+
+
+## Skills in one image
+![alt text](../images/skills.png)
+
+Read more [Extend Claude with skills](https://code.claude.com/docs/en/skills#automatic-discovery-from-nested-directories) and [Claude Code Skills](https://www.youtube.com/playlist?list=PLmWCw1CzcFim_hkruZSlABOUOAAQ5JMyo)
+
+Workflow of skills execution:
+
+1. Scan skills → build embedding index
+2. User query arrives
+3. Embed query
+4. Vector search (top-k skills)
+5. Rank + filter (heuristics / LLM)
+6. Assemble prompt (token budget aware)
+7. LLM reasoning
+8. Execute skills
+9. Append results
+10. Sliding window eviction
 
 ## What are git Worktrees?
 
