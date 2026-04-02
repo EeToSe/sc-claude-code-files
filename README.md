@@ -33,15 +33,11 @@ Each lesson is followed by a reading note that includes the prompts used, a summ
 - **[Lesson 6](reading_notes/L6_notes.md)**: Exploring Github Integration & Hooks
 - **[Lesson 7](reading_notes/L7_notes.md)**: Refactoring a Jupyter Notebook & Creating a Dashboard
 - **[Lesson 8](reading_notes/L8_notes.md)**: Creating Web App based on a Figma Mockup
-- **[Prompts & Summaries of Lessons](reading_notes/Lesson_summaries_prompts.md)**:
+- **[Summaries of Lessons](reading_notes/Lesson_summaries_prompts.md)**:
 
 ## What's Included
 
 - **[Reading Notes](reading_notes/)** (`reading_notes/`) - Detailed notes for each lesson including prompts used and feature summaries
-- **[Lesson 7 Files](lesson7_files/)** (`lesson7_files/`) - Complete ecommerce data analysis example with:
-    - Jupyter notebooks (original and refactored)
-    - Python modules for data loading, business metrics, and dashboard
-    - Sample ecommerce datasets
 - **[Additional Resources](additional_files/)** (`additional_files/`) - Supplementary materials including the visualization generated in lesson 1 and the figma binary file of the mockup used in lesson 8.
 
 ## Resources
